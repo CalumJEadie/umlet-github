@@ -1,15 +1,21 @@
 {
     "manifest_version": 2,
+
     "name": "UMLet GitHub",
-    "version": "0.1.0",
     "description": "View UMLet diagrams within GitHub",
     "author": "Calum J. Eadie",
+
+    "version": "0.1.0",
+
     "content_scripts": [
         {
             // e.g. https://github.com/CalumJEadie/umlet-github/blob/master/overview.uxf
             "matches": ["https://github.com/*/*/blob/*/*.uxf"],
             "css": [],
-            "js": ["content-script.js"]
+            "js": [
+                "vendor/jquery-2.0.3.min.js",
+                "content-script.js"
+            ]
         }
     ]
 }
