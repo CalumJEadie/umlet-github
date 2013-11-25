@@ -4,6 +4,7 @@ ug = {};
 
 ug.FILE_VIEW = "#files .file .blob-wrapper"
 ug.UXF_LINE = "#files .line";
+ug.API_ROOT = "http://localhost:5000/"
 
 ug.getUXF = function() {
     lines = $(ug.UXF_LINE).map(function(i, el) {
@@ -16,34 +17,38 @@ ug.getUXF = function() {
     return uxf;
 }
 
-ug.replaceXMLViewWithImage = function() {
+ug.replaceXMLViewWithSVG = function(diagramSVG) {
 
     // Use HTML that GitHub uses to display an image.
     // e.g. On https://github.com/CalumJEadie/umlet-github/blob/master/overview.png
-    imgHTML = '<div class="blob-wrapper data type-text js-blob-data">'
+    // Where an <img> tag is used on GitHub normally,
+    // place SVG.
+
+    newHTML = '<div class="blob-wrapper data type-text js-blob-data">'
     + '<div class="image js-image">'
     + '<span class="border-wrap">'
-    + '<img src="" alt="Loading...">'
+    + diagramSVG
     + '</span>'
     + '</div>'
     + '</div>'
-    $(ug.FILE_VIEW).replaceWith(imgHTML)
+
+    $(ug.FILE_VIEW).replaceWith(newHTML)
 
 }
 
-ug.getImageURL = function(callback) {
-    uxf = ug.getUXF()
 
-    // Do Ajax Request
-    imageURL = "http://www.calumjeadie.com/"
+ug.main = function() {
+    diagramUXF = ug.getUXF()
 
-    callback(imageURL)
+    $.ajax({
+        type: "POST",
+        url: ug.API_ROOT+"convert/uxf/svg/",
+        data: { diagramUXF: diagramUXF },
+        success: function( data ) {
+            ug.replaceXMLViewWithSVG(data)
+        },
+        dataType: "html"
+    })
 }
 
-ug.updateImageURL = function(imageURL) {
-    $(ug.FILE_VIEW).find("img").attr("src", imageURL)
-}
-
-ug.replaceXMLViewWithImage()
-
-ug.getImageURL(ug.updateImageURL)
+ug.main();
