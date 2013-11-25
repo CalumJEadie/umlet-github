@@ -45,8 +45,7 @@ $(function() {
             diagramUXF: diagramUXF
         },
         function (response) {
-            console.log(response)
-            ug.replaceXMLViewWithSVG(response);
+            ug.replaceXMLViewWithSVG(response.diagramSVG);
         }
     )
 

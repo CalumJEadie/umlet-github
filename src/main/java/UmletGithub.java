@@ -72,11 +72,6 @@ public class UmletGithub extends HttpServlet {
 
         String diagramUXF = req.getParameter("diagramUXF");
 
-        System.out.println(req.getParameterNames());
-
-        System.out.println(req);
-        System.out.println(diagramUXF);
-
         // Get an output stream suitable for writing binary
         // data to the client.
         ServletOutputStream respOutputStream = resp.getOutputStream();
@@ -99,8 +94,6 @@ public class UmletGithub extends HttpServlet {
         FileWriter tempWriter = new FileWriter(temp);
         tempWriter.write(diagramUXF);
         tempWriter.close();
-        
-        System.out.println(temp);
         
         DiagramHandler diagramHandler = new DiagramHandler(temp);
 

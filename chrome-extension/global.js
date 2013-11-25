@@ -1,5 +1,3 @@
-console.log("global.js loaded.")
-
 ug = {};
 
 ug.FILE_VIEW = "#files .file .blob-wrapper"
