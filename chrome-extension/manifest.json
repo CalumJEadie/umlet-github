@@ -35,6 +35,6 @@
 
     "permissions": [
         // Access web service.
-        "http://localhost:5000/*"
+        "http://umlet-github.herokuapp.com/*"
     ]
 }
