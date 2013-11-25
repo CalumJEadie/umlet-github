@@ -24,7 +24,7 @@ chrome.runtime.onMessage.addListener(
 
                 method = "POST";
                 url = ug.API_URLS.convertUXFToSVG;
-                payload = "diagramUXF=" + JSON.stringify(request.diagramUXF)
+                payload = "diagramSVG="+JSON.stringify(request.diagramUXF)
 
                 xhr.open(method, url, true);
 
@@ -36,7 +36,7 @@ chrome.runtime.onMessage.addListener(
                     }
                 }
 
-                xhr.setRequestHeader("Content-Type", "text/html");
+                xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 
                 xhr.send(payload);
 
