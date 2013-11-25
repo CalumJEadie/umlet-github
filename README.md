@@ -3,8 +3,17 @@ umlet-github
 
 View UMLet diagrams within GitHub.
 
-Notes
------
+Local development
+-----------------
+
+```
+mvn package
+export PORT=5000
+java -cp target/classes:"target/dependency/*" UmletGithub
+```
+
+Research
+--------
 
 **How can we convert from UXF to a PNG?**
 
