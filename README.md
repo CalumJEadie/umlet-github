@@ -62,3 +62,13 @@ umlet-maven-plugin / pom.xml
 </dependencyManagement>
 ...
 ```
+
+**How can Chrome extension access the web service?**
+
+http://developer.chrome.com/extensions/xhr.html
+
+Use message passing.
+
+http://developer.chrome.com/extensions/messaging.html
+
+http://developer.chrome.com/extensions/background_pages.html

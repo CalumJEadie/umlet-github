@@ -7,15 +7,34 @@
 
     "version": "0.1.0",
 
+    "background": {
+        "scripts": [
+          "global.js",
+          "background/background.js",
+          "vendor/jquery-2.0.3.min.js"
+        ],
+        "persistent": true
+    },
+
     "content_scripts": [
+
+        /*
+         * Modify GitHub pages with display UXF files.
+         * e.g. https://github.com/CalumJEadie/umlet-github/blob/master/overview.uxf
+        */
         {
-            // e.g. https://github.com/CalumJEadie/umlet-github/blob/master/overview.uxf
             "matches": ["https://github.com/*/*/blob/*/*.uxf"],
             "css": [],
             "js": [
+                "global.js",
                 "vendor/jquery-2.0.3.min.js",
-                "content-script.js"
+                "inject/view-uxf-page.js"
             ]
         }
+    ],
+
+    "permissions": [
+        // Access web service.
+        "http://localhost:5000/*"
     ]
 }

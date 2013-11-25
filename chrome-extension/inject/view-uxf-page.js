@@ -1,10 +1,7 @@
-console.log("console-script.js started");
-
-ug = {};
-
-ug.FILE_VIEW = "#files .file .blob-wrapper"
-ug.UXF_LINE = "#files .line";
-ug.API_ROOT = "http://localhost:5000/"
+/*
+ * Modify GitHub pages with display UXF files.
+ * e.g. https://github.com/CalumJEadie/umlet-github/blob/master/overview.uxf
+*/
 
 ug.getUXF = function() {
     lines = $(ug.UXF_LINE).map(function(i, el) {
@@ -30,25 +27,28 @@ ug.replaceXMLViewWithSVG = function(diagramSVG) {
     + diagramSVG
     + '</span>'
     + '</div>'
-    + '</div>'
+    + '</div>';
 
-    $(ug.FILE_VIEW).replaceWith(newHTML)
+    $(ug.FILE_VIEW).replaceWith(newHTML);
 
 }
 
+$(function() {
 
-ug.main = function() {
-    diagramUXF = ug.getUXF()
+    // Get UXF
+    diagramUXF = ug.getUXF();
 
-    $.ajax({
-        type: "POST",
-        url: ug.API_ROOT+"convert/uxf/svg/",
-        data: { diagramUXF: diagramUXF },
-        success: function( data ) {
-            ug.replaceXMLViewWithSVG(data)
+    console.log(diagramUXF)
+
+    // Use web service to convert UXF into SVG.
+    // Replace XML/UXF code display with SVG display.
+    chrome.extension.sendMessage({
+            directive: "convertUXFToSVG",
+            diagramUXF: diagramUXF
         },
-        dataType: "html"
-    })
-}
+        function (response) {
+            ug.replaceXMLViewWithSVG(response);
+        }
+    )
 
-ug.main();
+});
