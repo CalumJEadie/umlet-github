@@ -71,6 +71,7 @@ public class UmletGithub extends HttpServlet {
             throws ServletException, IOException {
 
         String diagramUXF = req.getParameter("diagramUXF");
+        System.out.println(diagramUXF);
 
         // Get an output stream suitable for writing binary
         // data to the client.
