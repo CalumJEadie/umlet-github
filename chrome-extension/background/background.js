@@ -1,6 +1,6 @@
 console.log("background.js loaded.")
 
-chrome.extension.onMessage.addListener(
+chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
 
         console.log(request)
@@ -14,7 +14,8 @@ chrome.extension.onMessage.addListener(
                     data: { diagramUXF: request.diagramUXF },
                     success: function( data ) {
                         console.log(data)
-                        sendResponse( data )
+                        console.log(sendResponse)
+                        console.log( sendResponse( data ) )
                     },
                     dataType: "html"
                 })

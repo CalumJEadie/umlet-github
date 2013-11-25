@@ -67,10 +67,10 @@ public class UmletGithub extends HttpServlet {
         + "</diagram>";
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        String diagramUXF = this.EXAMPLE_1;
+        String diagramUXF = req.getParameter("diagramUXF");
 
         // Get an output stream suitable for writing binary
         // data to the client.

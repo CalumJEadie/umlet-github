@@ -38,15 +38,14 @@ $(function() {
     // Get UXF
     diagramUXF = ug.getUXF();
 
-    console.log(diagramUXF)
-
     // Use web service to convert UXF into SVG.
     // Replace XML/UXF code display with SVG display.
-    chrome.extension.sendMessage({
+    chrome.runtime.sendMessage({
             directive: "convertUXFToSVG",
             diagramUXF: diagramUXF
         },
         function (response) {
+            console.log(response)
             ug.replaceXMLViewWithSVG(response);
         }
     )
