@@ -1,6 +1,8 @@
 umlet-github
 ============
 
+[calumjeadie.com](http://www.calumjeadie.com) / [@CalumJEadie](https://twitter.com/CalumJEadie)
+
 View UMLet diagrams within GitHub.
 
 !["SVG View"](screenshots/view-svg.png)
@@ -33,7 +35,7 @@ Git History
 Feedback and contributions
 --------------------------
 
-Very welcome!
+Very welcome! I'm [@CalumJEadie](https://twitter.com/CalumJEadie) on Twitter.
 
 Local development
 -----------------
