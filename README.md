@@ -3,6 +3,8 @@ umlet-github
 
 View UMLet diagrams within GitHub.
 
+Install from Chrome Web Store: https://chrome.google.com/webstore/detail/umlet-github/paimimbkklhmfcbbgmhpfpjaikijhppl
+
 Local development
 -----------------
 
