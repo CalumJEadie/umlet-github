@@ -5,7 +5,7 @@ umlet-github
 
 View UMLet diagrams within GitHub.
 
-!["SVG View"](screenshots/view-svg.png)
+!["SVG View"](screenshots/view-svg-xml-combined.png)
 
 Usage
 -----
