@@ -19,10 +19,6 @@
 
     "content_scripts": [
 
-        /*
-         * Modify GitHub pages with display UXF files.
-         * e.g. https://github.com/CalumJEadie/umlet-github/blob/master/overview.uxf
-        */
         {
             "matches": ["https://github.com/*/*/blob/*/*.uxf"],
             "css": [],
@@ -35,7 +31,6 @@
     ],
 
     "permissions": [
-        // Access web service.
         "http://umlet-github.herokuapp.com/*"
     ]
 }
