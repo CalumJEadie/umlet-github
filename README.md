@@ -3,10 +3,42 @@ umlet-github
 
 View UMLet diagrams within GitHub.
 
-Install from Chrome Web Store: https://chrome.google.com/webstore/detail/umlet-github/paimimbkklhmfcbbgmhpfpjaikijhppl
+!["SVG View"](screenshots/view-svg.png)
+
+Usage
+-----
+
+- Create diagrams using [UMLet](http://www.umlet.com/).
+- Install [umlet-github chrome extension](https://chrome.google.com/webstore/detail/umlet-github/paimimbkklhmfcbbgmhpfpjaikijhppl) to view UMLet diagrams
+
+Screenshots
+-----------
+
+XML View
+
+!["XML View"](screenshots/view-xml.png)
+
+SVG View
+
+!["SVG View"](screenshots/view-svg.png)
+
+Git Blame
+
+!["Git Blame"](screenshots/blame.png)
+
+Git History
+
+!["Git History"](screenshots/history.png)
+
+Feedback and contributions
+--------------------------
+
+Very welcome!
 
 Local development
 -----------------
+
+To run the web service.
 
 ```
 mvn package
@@ -14,27 +46,19 @@ export PORT=5000
 java -cp target/classes:"target/dependency/*" UmletGithub
 ```
 
-Research
---------
+Resources
+---------
 
-**How can we convert from UXF to a PNG?**
+**Converting from UML to SVG**
 
-umlet-maven-plugin - Maven plugin that converts UMLet diagrams into images for site documentation.
+umlet-maven-plugin
+
+Maven plugin that converts UMLet diagrams into images for site documentation. Uses UMLet directly to provide UXF to image
+conversion.
 
 https://github.com/ykryshchuk/umlet-maven-plugin
 
-umlet-maven-plugin uses UMLet directly to provide the UXF to image conversion.
-
-umlet-maven-plugin / com.kryshchuk.maven.plugins.umlet.ConvertDiagramMojo.java
-
-```java
-import com.baselet.diagram.DiagramHandler;
-...
-diagramHandler = new DiagramHandler(inputFile);
-diagramHandler.getFileHandler().doExportAs("png", outputFile);
-```
-
-**Can UMLet and some custom Java be run on Heroku?**
+**Java on Heroku**
 
 https://devcenter.heroku.com/articles/intro-for-java-developers
 
@@ -42,34 +66,11 @@ https://devcenter.heroku.com/articles/run-non-web-java-processes-on-heroku
 
 https://devcenter.heroku.com/articles/getting-started-with-java
 
-**Will I need to create a web application in Java or can I write it in Python/web.py and call out to a Java process?**
-
-Looks like will be able to get pretty far using the Jetty web server.
-
-**How would you access UMLet from a Jetty web application?**
-
-umlet-maven-plugin uses Maven to bring in requirements.
-
-umlet-maven-plugin / pom.xml
-
-```xml
-...
-<dependencyManagement>
-    <dependencies>
-        <dependency>
-        <groupId>com.umlet</groupId>
-        <artifactId>umlet</artifactId>
-        <version>12.0</version>
-  </dependency>
-</dependencyManagement>
-...
-```
-
-**How can Chrome extension access the web service?**
+**Communicating with the web service from the chrome extension**
 
 http://developer.chrome.com/extensions/xhr.html
 
-Use message passing.
+**Communicating between content script and background script**
 
 http://developer.chrome.com/extensions/messaging.html
 
